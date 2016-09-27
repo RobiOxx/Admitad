@@ -1,0 +1,49 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="material_padding">16dp</dimen>
+    <dimen name="material_padding_input_small">6dp</dimen>
+    <dimen name="material_padding_small">12dp</dimen>
+    <dimen name="material_padding_big">32dp</dimen>
+    <dimen name="material_text_h1">20sp</dimen>
+    <dimen name="material_text_h2">18sp</dimen>
+    <dimen name="material_text_h3">16sp</dimen>
+    <dimen name="material_text_small">12sp</dimen>
+    <dimen name="material_checkbox_mr_lh">-2dp</dimen>
+    <dimen name="material_item_top">4dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="nav_header_vertical_spacing">16dp</dimen>
+    <dimen name="nav_header_height">160dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <!-- End -->
+
+    <!-- -->
+    <!-- End -->
+
+    <!-- -->
+    <!-- End -->
+
+    <!-- -->
+    <!-- End -->
+
+    <!-- -->
+    <!-- End -->
+
+    <!-- -->
+    <!-- End -->
+
+    <!-- -->
+    <!-- End -->
+
+    <!-- -->
+    <!-- End -->
+
+    <!-- -->
+    <!-- End -->
+
+    <!-- -->
+    <!-- End -->
+
+</resources>

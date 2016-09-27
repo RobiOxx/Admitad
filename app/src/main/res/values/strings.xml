@@ -1,0 +1,53 @@
+<resources>
+
+    <!-- Activities & Fragment name -->
+    <string name="app_name">Admitad</string>
+    <!-- End -->
+
+    <!-- Activity Login -->
+    <string name="login_button">Авторизация</string>
+    <string name="login_title">Добро пожаловать в приложение Admitad. Для работы Вам необходимо авторизоваться</string>
+    <!-- End -->
+
+    <!-- Navigation Drawer -->
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_drawer_balance_ready">Готовы к снятию</string>
+    <string name="nav_drawer_balance_balance">%1$s %2$s</string>
+    <string name="nav_drawer_balance_empty">0.00</string>
+    <string name="nav_menu_main">Главная</string>
+    <string name="nav_menu_tools">Инструменты</string>
+    <string name="nav_menu_programmes">Программы</string>
+    <string name="nav_menu_goods">Товары</string>
+    <string name="nav_menu_stats">Статистика</string>
+    <string name="nav_menu_apps">Приложения</string>
+    <string name="nav_menu_settings">Настройки</string>
+    <string name="nav_menu_exit">Выход</string>
+    <!-- End -->
+
+    <!-- -->
+    <!-- End -->
+
+    <!-- -->
+    <!-- End -->
+
+    <!-- -->
+    <!-- End -->
+
+    <!-- -->
+    <!-- End -->
+
+    <!-- -->
+    <!-- End -->
+
+    <!-- -->
+    <!-- End -->
+
+    <!-- -->
+    <!-- End -->
+
+    <!-- Messages -->
+    <string name="msg_login_error">Возникла ошибка, пожалуйста, попробуйте позже</string>
+    <!-- End -->
+
+</resources>
