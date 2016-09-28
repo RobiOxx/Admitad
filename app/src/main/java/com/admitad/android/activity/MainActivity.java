@@ -1,6 +1,7 @@
 package com.admitad.android.activity;
 
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.UiThread;
@@ -15,10 +16,12 @@ import android.widget.TextView;
 
 import com.admitad.android.R;
 import com.admitad.android.data.models.ModelBalance;
-import com.admitad.android.data.models.ModelBalanceItem;
 import com.admitad.android.data.models.ModelLogin;
 import com.admitad.android.mvp.presenter.MainPresenter;
 import com.admitad.android.mvp.view.MainView;
+
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -33,8 +36,11 @@ public class MainActivity extends ActivityBase
 
     private MainPresenter mMainPresenter;
     private Unbinder mUnbinder;
+    private IntentFilter mIntentFilter;
 
     private int current_id = R.id.nav_main;
+
+    public static final String mBroadcastStringAction = "com.admitad.android.string";
     private static final int ACTIVITY_LOGIN_CODE = 10;
 
     @Override
@@ -54,7 +60,6 @@ public class MainActivity extends ActivityBase
         navigationView.setNavigationItemSelectedListener(this);
 
         checkLogin();
-
     }
 
     @UiThread
@@ -63,11 +68,14 @@ public class MainActivity extends ActivityBase
             startActivityForResult(new Intent(this, ActivityLogin.class), ACTIVITY_LOGIN_CODE);
         } else {
             ModelLogin modelLogin = mPref.getUserInfo();
-
-            if (System.currentTimeMillis() - modelLogin.getLoginDate() >= modelLogin.getExpiresIn()) {
+            long time = TimeUnit.SECONDS.toMillis(modelLogin.getLoginDate());
+            if (System.currentTimeMillis() >= time + modelLogin.getExpiresIn()) {
                 mPref.deleteUserInfo();
                 checkLogin();
             } else {
+                mIntentFilter = new IntentFilter();
+                mIntentFilter.addAction(mBroadcastStringAction);
+
                 //FragmentSystem.getInstance().openFragment(getSupportFragmentManager(),
                 //        FragmentSystem.FragmentEnum.FragmentMain, R.id.container, false);
                 String token = "Bearer " + mPref.getUserInfo().getAccessToken();
@@ -76,10 +84,8 @@ public class MainActivity extends ActivityBase
         }
     }
 
-
-    @UiThread
     @Override
-    public void setBalance(ModelBalance modelBalance) {
+    public void setBalance(List<ModelBalance> list) {
         ModelLogin modelLogin = mPref.getUserInfo();
 
         View headerLayout = navigationView.getHeaderView(0);
@@ -97,7 +103,7 @@ public class MainActivity extends ActivityBase
             lang.setText(modelLogin.getLanguage());
         }
 
-        for (ModelBalanceItem balanceItem : modelBalance.getModelBalanceItems()) {
+        for (ModelBalance balanceItem : list) {
             String currency = balanceItem.getCurrency();
             String balance = balanceItem.getBalance();
             if (currency.contains("RUB")) {
@@ -112,14 +118,18 @@ public class MainActivity extends ActivityBase
             }
         }
 
-        if (rub.getText().toString().isEmpty() || rub.getText().toString().equals("")) {
-            rub.setText(getString(R.string.nav_drawer_balance_empty));
+        String rub_text = rub.getText().toString();
+        String usd_text = usd.getText().toString();
+        String eur_text = eur.getText().toString();
+
+        if (rub_text.isEmpty() || rub_text.equals("") || rub_text.contains("0.00")) {
+            rub.setText(String.format(getString(R.string.nav_drawer_balance_empty), "RUB"));
         }
-        if (usd.getText().toString().isEmpty() || usd.getText().toString().equals("")) {
-            usd.setText(getString(R.string.nav_drawer_balance_empty));
+        if (usd_text.isEmpty() || usd_text.equals("") || usd_text.contains("0.00")) {
+            usd.setText(String.format(getString(R.string.nav_drawer_balance_empty), "USD"));
         }
-        if (eur.getText().toString().isEmpty() || eur.getText().toString().equals("")) {
-            eur.setText(getString(R.string.nav_drawer_balance_empty));
+        if (eur_text.isEmpty() || eur_text.equals("") || eur_text.contains("0.00")) {
+            eur.setText(String.format(getString(R.string.nav_drawer_balance_empty), "EUR"));
         }
     }
 

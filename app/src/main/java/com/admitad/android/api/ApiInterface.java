@@ -4,6 +4,7 @@ package com.admitad.android.api;
 import com.admitad.android.data.models.ModelBalance;
 import com.admitad.android.data.models.ModelLogin;
 
+import java.util.List;
 import java.util.Map;
 
 import retrofit2.Call;
@@ -32,7 +33,7 @@ public interface ApiInterface {
     Call<ModelLogin> updateUserToken(@FieldMap Map<String, String> fields);
 
     @GET("me/balance/")
-    Call<ModelBalance> getUserBalance(@Header("Authorization") String token);
+    Call<List<ModelBalance>> getUserBalance(@Header("Authorization") String token);
 
 
 }

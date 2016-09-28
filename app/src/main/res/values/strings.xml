@@ -14,7 +14,7 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_drawer_balance_ready">Готовы к снятию</string>
     <string name="nav_drawer_balance_balance">%1$s %2$s</string>
-    <string name="nav_drawer_balance_empty">0.00</string>
+    <string name="nav_drawer_balance_empty">%1$s 0.00</string>
     <string name="nav_menu_main">Главная</string>
     <string name="nav_menu_tools">Инструменты</string>
     <string name="nav_menu_programmes">Программы</string>

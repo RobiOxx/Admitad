@@ -25,12 +25,12 @@ public class LoginPresenter implements BaseView {
         getToken.enqueue(new Callback<ModelLogin>() {
             @Override
             public void onResponse(Call<ModelLogin> call, Response<ModelLogin> response) {
-                mLoginView.successAuthorization(response.body());
+                if (mLoginView != null) mLoginView.successAuthorization(response.body());
             }
 
             @Override
             public void onFailure(Call<ModelLogin> call, Throwable t) {
-                mLoginView.errorAuthorization();
+                if (mLoginView != null) mLoginView.errorAuthorization();
             }
         });
     }

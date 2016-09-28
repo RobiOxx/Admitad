@@ -166,4 +166,18 @@ public class ModelLogin {
     public void setLoginDate(long loginDate) {
         this.loginDate = loginDate;
     }
+
+    @Override
+    public String toString() {
+        return "ModelLogin{" +
+                "username='" + username + '\'' +
+                ", language='" + language + '\'' +
+                ", accessToken='" + accessToken + '\'' +
+                ", expiresIn=" + expiresIn +
+                ", tokenType='" + tokenType + '\'' +
+                ", id=" + id +
+                ", refreshToken='" + refreshToken + '\'' +
+                ", loginDate=" + loginDate +
+                '}';
+    }
 }
